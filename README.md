@@ -25,6 +25,10 @@ on older releases.
 * ```iostat.py``` creates metrics from the CPU usage, disk, and load
   averages produced by ```iostat```.
 
+* alternate version written in c which provides stats per second or less
+
+* ```netstat.py```creates metrics from produced by ```netstat -s```.
+
 ## Other Stats
 
 Apple seems to enjoy making the output of their stats utilities human
