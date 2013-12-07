@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-"""netstat adapter on macos"""
-#
+# pa
+"""netstat adapter on macos fot tcollector """
 import os
 import subprocess
 import sys
@@ -36,12 +36,13 @@ def is_number(item):
 def cleaner(items):
     """ trim item """
     splitted = items.split()
+    # print splitted
     cleaned = []
     number = None
     for item in splitted:
         if is_number(item):
             number = item
-        else:
+        elif item[0] is not '(' and item[len(item)-1] is not ')':
             cleaned.append(only_ascii(item))
     return (number, '_'.join(cleaned))
 
@@ -68,6 +69,7 @@ def test_cleaner():
     ts = int(time.time())
     print only_ascii("tcp6:")
     print cleaner('13 bad neighbor advertisement messages')
+    print cleaner('247413 datagrams (14816253 bytes) over IPv4')
     print emit_metric(ts, ['arp:', '22 ARP entries timed out'])
     print emit_metric(ts, ['ip:', '49196 packets sent from this host', '2 output packets discarded due to no route'])
 
